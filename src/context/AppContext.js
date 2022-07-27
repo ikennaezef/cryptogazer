@@ -7,11 +7,31 @@ export const useAppContext = () => {
 }
 
 const AppContext = ({children}) => {
+  
+  const supportedCurrencies = [
+    {
+      value: 'USD',
+      symbol: '$'
+    },
+    {
+      value: 'GBP',
+      symbol: '£'
+    },
+    {
+      value: 'EUR',
+      symbol: '€'
+    },
+    {
+      value: 'NGN',
+      symbol: 'N'
+    }
+  ];
 
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState(supportedCurrencies[0]);
+
 
   return (
-    <StateContext.Provider value={{currency, setCurrency}}>
+    <StateContext.Provider value={{currency, setCurrency, supportedCurrencies}}>
       {children}
     </StateContext.Provider>
   )
