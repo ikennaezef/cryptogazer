@@ -7,16 +7,16 @@ import {useAppContext} from "../context/AppContext";
 const Header = () => {
 
   const {supportedCurrencies, setCurrency } = useAppContext();
-
+  
   return (
     <Box py={5}>
       <Container maxW='container.xl'>
         <Flex align='center' justify='space-between'>
-          <Heading fontSize='1.5rem' fontWeight='600' color='cyan.300'>CryptoGazer</Heading>
+          <Heading fontSize='1.5rem' fontWeight='600' color='blue.400'>CryptoGazer</Heading>
           <Box>
-            <Select onChange={(e) => setCurrency(e.target.value)} colorScheme='blue.700' >
+            <Select onChange={(e) => setCurrency(supportedCurrencies.filter(curr => curr.value === e.target.value)[0])} colorScheme='blue.700' >
               {supportedCurrencies.map((currency, i) => (
-                <option style={{background: '#2D3748'}} key={i} value={currency}>{currency}</option>
+                <option style={{background: '#2D3748'}} key={i} value={currency.value}>{currency.value}</option>
               ))}
             </Select>
           </Box>

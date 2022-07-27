@@ -5,7 +5,7 @@ import {Header} from "./";
 
 const Layout = ({children}) => {
   return (
-    <Box bg='gray.700' color='white' minH='100vh'>
+    <Box bg='gray.800' color='gray.50' minH='100vh'>
       <Header/>
       <main>
         {children}

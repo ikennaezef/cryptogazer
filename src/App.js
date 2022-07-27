@@ -1,14 +1,11 @@
 import './App.css';
 
-import {useState} from 'react';
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import {Home, Coin} from "./pages";
 
-function App() {
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
+const App = () => {
   return (
     <Router>
       <Routes>

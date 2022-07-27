@@ -24,6 +24,10 @@ const AppContext = ({children}) => {
     {
       value: 'NGN',
       symbol: 'N'
+    },
+    {
+      value: 'JPY',
+      symbol: '¥'
     }
   ];
 
