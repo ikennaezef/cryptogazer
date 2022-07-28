@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 
 import {useAppContext} from "../context/AppContext";
 import {getAllCoins} from "../config/api";
+import {numberWithCommas} from "../utils";
 
 const DataTables = () => {
 
@@ -17,10 +18,6 @@ const DataTables = () => {
   const [error, setError] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   let navigate = useNavigate();
-
-  const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
 
   const fetchCoins = async () => {
     try {
@@ -40,8 +37,8 @@ const DataTables = () => {
   const handleSearch = () => {
     return coinsData.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(searchQuery) ||
-        coin.symbol.toLowerCase().includes(searchQuery)
+        coin?.name.toLowerCase().includes(searchQuery) ||
+        coin?.symbol.toLowerCase().includes(searchQuery)
     );
   }
 
@@ -84,26 +81,26 @@ const DataTables = () => {
               </Thead>
               <Tbody>
                 {handleSearch().slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10).map((coin) => {
-                  let profit = coin.price_change_percentage_24h >= 0;
+                  let profit = coin?.price_change_percentage_24h >= 0;
                   return (
-                      <Tr key={coin.id} onClick={() => navigate(`/coin/${coin.id}`)} >
+                      <Tr key={coin?.id} onClick={() => navigate(`/coin/${coin?.id}`)} >
                         <Td>
                           <Flex align='center' gap='0.5rem'>
-                            <Image boxSize='3rem' src={coin.image} alt={coin.name} />
+                            <Image boxSize='3rem' src={coin?.image} alt={coin?.name} />
                             <Box>
-                              <Text fontSize='0.8rem' color='gray.300' >{coin.name}</Text>
-                              <Text>{coin.symbol.toUpperCase()}</Text>
+                              <Text fontSize='0.8rem' color='gray.300' >{coin?.name}</Text>
+                              <Text>{coin?.symbol.toUpperCase()}</Text>
                             </Box>
                           </Flex>
                         </Td>
                         <Td isNumeric>
-                          {currency.symbol}{numberWithCommas(coin.current_price)}
+                          {currency.symbol}{numberWithCommas(coin?.current_price)}
                         </Td>
                         <Td isNumeric color={profit ? 'green.300' : 'red.300'}>
-                          {profit && '+'}{coin.price_change_percentage_24h.toFixed(2)}
+                          {profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}
                         </Td>
                         <Td isNumeric>
-                          {currency.symbol}{Math.round(((coin.market_cap)/1000000))}{"M"}
+                          {currency.symbol}{Math.round(((coin?.market_cap)/1000000))}{"M"}
                         </Td>
                       </Tr>
                     )
