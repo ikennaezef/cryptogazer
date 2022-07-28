@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom"
 
-import {Box, Text, Heading, Flex, Image, Spinner, InputGroup, InputRightElement, Input, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableContainer } from "@chakra-ui/react";
+import {Box, Text, Flex, Image, Spinner, InputGroup, InputRightElement, Input, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableContainer } from "@chakra-ui/react";
 import {BsSearch, BsChevronRight, BsChevronLeft} from "react-icons/bs";
 import ReactPaginate from "react-paginate";
 
@@ -14,6 +14,7 @@ const DataTables = () => {
   const [coinsData, setCoinsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   let navigate = useNavigate();
 
@@ -23,11 +24,16 @@ const DataTables = () => {
 
   const fetchCoins = async () => {
     try {
+      setLoading(true);
+      setError(false);
       const res = await fetch(getAllCoins(currency.value));
       const data = await res.json();
       setCoinsData(data);
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       console.log(err)
+      setError(true);
     }
   }
 
@@ -41,6 +47,7 @@ const DataTables = () => {
 
   const changePage = ({selected}) => {
     setPageNumber(selected + 1);
+    window.scroll(0, 400);
   }
 
   useEffect(() => {
@@ -62,7 +69,8 @@ const DataTables = () => {
       </Box>
 
       <Box mb={6}>
-        {loading || coinsData.length < 1 ? (
+        {error && <Text color='red.400' py={5}>It seems like an error occured. Couldn't fetch coin data.</Text>}
+        { loading ? (
           <Flex align='center' justify='center' w='full' py={6}><Spinner color='blue.400' size='xl'/></Flex>) : (
           <TableContainer>
             <Table variant='simple' colorScheme='whiteAlpha' >

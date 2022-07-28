@@ -14,14 +14,21 @@ const Banner = () => {
 
   const {currency} = useAppContext();
   const [trendingCoins, setTrendingCoins] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchTrending = async () => {
     try {
+      setLoading(true);
+      setError(false);
       const res = await fetch(getTrendingCoins(currency.value));
       const data = await res.json();
       setTrendingCoins(data);
+      setLoading(false);
     } catch (err) {
-      console.log(err)
+      setLoading(false);
+      console.log(err);
+      setError(true);
     }
   }
 
@@ -67,8 +74,9 @@ const Banner = () => {
           <Heading fontSize={{base: '2.4rem', md: '2.8rem'}} mb={2} >Crypto Gazer</Heading>
           <Text color='gray.300'>Get all the info you need about your favorite cryptocurrencies</Text>
         </Box>
-        <Flex align='center' justify='center'>
-          {trendingCoins.length < 1 ?
+        <Flex direction='column' align='center' justify='center'>
+          {error && <Text color='red.400' py={5}>It seems like an error occured. Couldn't fetch coin data.</Text>}
+          {!error && loading ?
             (<Flex align='center' justify='center' w='full' py={6}><Spinner color='blue.400' size='xl'/></Flex>) :
             (<AliceCarousel
               mouseTracking

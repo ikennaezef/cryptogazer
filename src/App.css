@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
-body {
+body, html {
+  scroll-behavior: smooth;
   font-family: 'Work Sans', sans-serif !important;
 }
 
@@ -32,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 .paginationBtns a:hover, 
 .paginationActive a {
   color: #fff;
-  background-color: rgba(250, 250, 250, 0.2);
+  background-color: rgba(66, 153, 225, 0.2);
 }
 
 .nextBtn a, .prevBtn a {
