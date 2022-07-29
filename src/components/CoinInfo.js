@@ -11,7 +11,7 @@ const CoinInfo = ({coin}) => {
   const {currency} = useAppContext();
 
   return (
-    <Box w={{base: 'full', md: '30%'}} minH={{base: 'auto', md: '100vh'}} borderRightWidth={{base: '0', md: '1px'}} borderRightColor='gray.200'>
+    <Box w={{base: 'full', md: '30%'}} minH={{base: 'auto', md: '90vh'}} borderRightWidth={{base: '0', md: '1px'}} borderRightColor='gray.200'>
       <Box>
         <Flex direction='column' align='center' gap='1rem' mb={4}>
           <Image boxSize='6rem' src={coin?.image.large} alt={coin?.name} />

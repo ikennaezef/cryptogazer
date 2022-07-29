@@ -25,7 +25,7 @@ const Coin = () => {
   return (
     <Layout>
       <Container maxW='container.xl'>
-        <Flex direction={{base: 'column', md: 'row'}} gap='1rem' >
+        <Flex direction={{base: 'column', md: 'row'}} gap='1rem' py={5} >
           {!coinData ? <Flex w='full' justify='center' py={5}><Spinner color='blue.400' size='xl' /></Flex>
             : (
                 <>
