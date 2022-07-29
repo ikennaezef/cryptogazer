@@ -25,12 +25,12 @@ const Coin = () => {
   return (
     <Layout>
       <Container maxW='container.xl'>
-        <Flex direction={{base: 'column', md: 'row'}}>
+        <Flex direction={{base: 'column', md: 'row'}} gap='1rem' >
           {!coinData ? <Flex w='full' justify='center' py={5}><Spinner color='blue.400' size='xl' /></Flex>
             : (
                 <>
                   <CoinInfo coin={coinData}/>
-                  <CoinChart/>
+                  <CoinChart coin={coinData}/>
                 </>
               )
           }

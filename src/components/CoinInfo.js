@@ -10,10 +10,8 @@ const CoinInfo = ({coin}) => {
 
   const {currency} = useAppContext();
 
-  console.log(coin);
-
   return (
-    <Box w={{base: 'full', md: '30%'}} borderRightWidth={{base: '0', md: '1px'}} borderRightColor='gray.200'>
+    <Box w={{base: 'full', md: '30%'}} minH={{base: 'auto', md: '100vh'}} borderRightWidth={{base: '0', md: '1px'}} borderRightColor='gray.200'>
       <Box>
         <Flex direction='column' align='center' gap='1rem' mb={4}>
           <Image boxSize='6rem' src={coin?.image.large} alt={coin?.name} />
@@ -23,7 +21,7 @@ const CoinInfo = ({coin}) => {
         <Box>
           <Text mb={3} fontSize='1.1rem'><strong>Rank: </strong> {coin?.coingecko_rank}</Text>
           <Text mb={3} fontSize='1.1rem'><strong>Current Price: </strong> {currency.symbol}{coin?.market_data.current_price[currency.value.toLowerCase()]}</Text>
-          <Text mb={3} fontSize='1.1rem'><strong>Rank: </strong> {coin?.coingecko_rank}</Text>
+          <Text mb={3} fontSize='1.1rem'><strong>Market Cap: </strong> {currency.symbol}{numberWithCommas((coin?.market_data.market_cap[currency.value.toLowerCase()]/1000000).toFixed(0))}{"M"}</Text>
         </Box>
       </Box>
     </Box>
