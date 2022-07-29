@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import {Box, Flex, Container, Spinner, Button, Text, Heading, Link} from "@chakra-ui/react";
+import {Box, Flex, Spinner, Button} from "@chakra-ui/react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,7 +14,6 @@ import {
 import { Line } from "react-chartjs-2";
 
 import {useAppContext} from "../context/AppContext";
-import {numberWithCommas} from "../utils";
 import {getChart} from "../config/api";
 import {buttons} from "../config/data";
 

@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-import {Box, Flex, Container, Image, Button, Text, Heading, Link} from "@chakra-ui/react";
+import {Box, Flex, Image, Text, Heading} from "@chakra-ui/react";
 import parse from "html-react-parser";
 
 import {useAppContext} from "../context/AppContext";

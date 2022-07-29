@@ -4,8 +4,7 @@ import {useParams} from "react-router-dom";
 import {Container, Flex, Spinner} from "@chakra-ui/react"
 import {Layout, CoinInfo, CoinChart} from "../components";
 
-import {useAppContext} from "../context/AppContext";
-import {getSingleCoin, getChart} from "../config/api";
+import {getSingleCoin} from "../config/api";
 
 const Coin = () => {
 
