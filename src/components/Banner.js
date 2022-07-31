@@ -46,12 +46,12 @@ const Banner = () => {
     return (
         <Link to={`/coin/${coin?.id}`}>
           <Flex direction='column' align='center' gap='0.8rem'>
-            <Image boxSize='4rem' src={coin?.image} alt='coin image' />
+            <Image boxSize={{base: '3rem', md: '4rem'}} src={coin?.image} alt='coin image' />
             <Flex align='center' gap='0.5rem'>
               <Text>{coin?.symbol.toUpperCase()}</Text>
-              <Text color={profit ? 'green.300' : 'red.300'}>{profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}</Text>
+              <Text color={profit ? 'green.300' : 'red.300'}>{profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}%</Text>
             </Flex>
-            <Text fontSize='1.2rem'>{currency.symbol}{numberWithCommas(coin?.current_price.toFixed(2))}</Text>
+            <Text fontSize='1.1rem'>{currency.symbol}{numberWithCommas(coin?.current_price.toFixed(2))}</Text>
           </Flex>
         </Link>
     )
@@ -65,7 +65,7 @@ const Banner = () => {
     <Box py={10}>
       <Container maxW='container.md'>
         <Box mb={6} textAlign='center'>
-          <Heading fontSize={{base: '2.4rem', md: '2.8rem'}} mb={2} >Crypto Gazer</Heading>
+          <Heading fontSize={{base: '2.2rem', md: '2.8rem'}} mb={2} >Crypto Gazer</Heading>
           <Text color='gray.300'>Get all the info you need about your favorite cryptocurrencies</Text>
         </Box>
         <Flex direction='column' align='center' justify='center'>

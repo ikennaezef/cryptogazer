@@ -10,7 +10,7 @@ const Header = () => {
   const {supportedCurrencies, setCurrency } = useAppContext();
   
   return (
-    <Box py={5}>
+    <Box py={{base: 3, md: 5}}>
       <Container maxW='container.xl'>
         <Flex align='center' justify='space-between'>
           <Heading fontSize='1.5rem' fontWeight='600' color='blue.400'><Link to="/">CryptoGazer</Link></Heading>

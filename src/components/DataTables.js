@@ -37,8 +37,8 @@ const DataTables = () => {
   const handleSearch = () => {
     return coinsData.filter(
       (coin) =>
-        coin?.name.toLowerCase().includes(searchQuery) ||
-        coin?.symbol.toLowerCase().includes(searchQuery)
+        coin?.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        coin?.symbol.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }
 
@@ -94,7 +94,7 @@ const DataTables = () => {
                           </Flex>
                         </Td>
                         <Td isNumeric>
-                          {currency.symbol}{numberWithCommas(coin?.current_price)}
+                          {currency.symbol}{coin?.current_price < 1 ? coin?.current_price.toFixed(5) : numberWithCommas(coin?.current_price)}
                         </Td>
                         <Td isNumeric color={profit ? 'green.300' : 'red.300'}>
                           {profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}
