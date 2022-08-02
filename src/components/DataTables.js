@@ -96,7 +96,7 @@ const DataTables = () => {
                         <Td isNumeric>
                           {currency.symbol}{coin?.current_price < 1 ? coin?.current_price.toFixed(5) : numberWithCommas(coin?.current_price)}
                         </Td>
-                        <Td isNumeric color={profit ? 'green.300' : 'red.300'}>
+                        <Td isNumeric color={profit ? 'green.400' : 'red.400'}>
                           {profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}
                         </Td>
                         <Td isNumeric>

@@ -49,7 +49,7 @@ const Banner = () => {
             <Image boxSize={{base: '3rem', md: '4rem'}} src={coin?.image} alt='coin image' />
             <Flex align='center' gap='0.5rem'>
               <Text>{coin?.symbol.toUpperCase()}</Text>
-              <Text color={profit ? 'green.300' : 'red.300'}>{profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}%</Text>
+              <Text color={profit ? 'green.400' : 'red.400'}>{profit && '+'}{coin?.price_change_percentage_24h.toFixed(2)}%</Text>
             </Flex>
             <Text fontSize='1.1rem'>{currency.symbol}{numberWithCommas(coin?.current_price.toFixed(2))}</Text>
           </Flex>
